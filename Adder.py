@@ -17,7 +17,7 @@ def main():
     else:
         mode2 = input('Listen from mic, or file? y / n')
         if mode2 == 'y' or mode2 == 'Y':
-            Listener.listen(10)
+            Listener.listen(10, filename= 'output.wav')
             Adder.add_audio('output.wav')
             os.remove('output.wav')
         else:

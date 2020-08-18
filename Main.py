@@ -17,10 +17,11 @@ def take_name_from_camera(image=None):
 
 def take_name_from_camera():
     name = FaceAccess.check()
+
     return name
 
 
-def take_name_from_voice(voice_file, mode=False):
+def take_name_from_voice(voice_file='', mode=False):
     if voice_file == '':
         try:
             Listener.listen(12, filename='output.wav')
@@ -32,15 +33,22 @@ def take_name_from_voice(voice_file, mode=False):
         os.remove('output.wav')
         return name
 
+    elif voice_file == "None":
+        print('None voice file. Recognition now is based only on face')
+        return 'Hydra'
+
     return Cheacker.check(voice_file)
 
 
 def compare_names(voice_name, face_name):
-    if voice_name != 'Unknown Person' and face_name != 'Unknown Person':
+    if voice_name != 'Unknown Person' and face_name != 'Unknown Person' and voice_name != 'Hydra':
         if voice_name == face_name or voice_name == 'Hydra':
             return True, face_name
         else:
             return False, 'Unknown Person'
+
+    elif voice_name == 'Hydra':
+        return True, face_name
 
     elif voice_name == 'Unknown Person':
         print("Voice recognition was broken. Please try again {0}".format(face_name))
@@ -57,7 +65,7 @@ def take_voice_from_mic():
 
 
 def main():
-    voice_name = take_name_from_voice('')
+    voice_name = take_name_from_voice('None')  # if you want to recognize your voice from mic, voice_file must be empty
     face_name = take_name_from_camera()
 
     res, Name = compare_names(voice_name, face_name)
@@ -66,6 +74,8 @@ def main():
         print()
         print('Welcome back ' + Name)
         print()
+    else:
+        print(Name)
 
 
 main()

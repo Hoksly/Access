@@ -128,6 +128,7 @@ class FaceAccess:
 
                 if True not in a:
 
+
                     new_name = compare(new_enc, known_encodes_and_names)
                     enc = new_enc
                     if name != new_name:
@@ -191,4 +192,4 @@ class FaceAdder:
         file.close()
         print("Done")
 
-FaceAdder.AddPersonFromCamera()
+
