@@ -1,4 +1,4 @@
-from modules.Voice import Cheacker, Listener
+from modules.Voice import Cheacker, Listener, SpeechRecognizer
 from modules.Face import FaceAccess
 import os
 
@@ -38,6 +38,10 @@ def take_name_from_voice(voice_file='', mode=False):
         return 'Hydra'
 
     return Cheacker.check(voice_file)
+
+
+def take_speech_data(file):
+    return SpeechRecognizer.recognize(file) # only english voice can be recognized
 
 
 def compare_names(voice_name, face_name):

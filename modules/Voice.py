@@ -3,6 +3,7 @@ import numpy as np
 import sys
 from pydub import AudioSegment
 import wave
+import speech_recognition
 import pyaudio
 
 SR = 1600
@@ -135,7 +136,7 @@ class Adder:
     """
 
     @staticmethod
-    def add_audio(audio_file, file_name = directory + 'voices.txt'):
+    def add_audio(audio_file, file_name=directory + 'voices.txt'):
         new_audio = check(audio_file)
 
         audio = filter_audio(process_audio(new_audio))
@@ -156,13 +157,11 @@ class Adder:
 
 class Listener:
     @staticmethod
-    def listen(seconds, filename = 'output.wav'):
+    def listen(seconds, filename='output.wav'):
         chunk = 1024  # Record in chunks of 1024 samples
         sample_format = pyaudio.paInt16  # 16 bits per sample
         channels = 2
         fs = 44100  # Record at 44100 samples per second
-
-        f
 
         p = pyaudio.PyAudio()  # Create an interface to PortAudio
 
@@ -196,3 +195,17 @@ class Listener:
         wf.setframerate(fs)
         wf.writeframes(b''.join(frames))
         wf.close()
+
+
+class SpeechRecognizer:
+    @staticmethod
+    def recognize(file, recognizer='google'):
+        if recognizer == 'google':
+            speech_data = speech_recognition.AudioFile(file)
+            with speech_data as audio_data:
+                recog = speech_recognition.Recognizer()
+                audio_content = recog.record(audio_data)
+                data = recog.recognize_google(audio_content)
+
+                return data
+
