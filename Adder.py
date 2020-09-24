@@ -5,13 +5,14 @@ import os
 
 def main():
     mode = ''
+    '''
     while mode != 'F' or mode != 'V' or mode != 'f' or mode != 'v':
         mode = input('For adding face print F, for voice print V.'
                      'For exit print X')
 
         if mode == 'x' or mode == 'X':
             return None
-
+    '''
     if mode == 'f' or mode == 'F':
         FaceAdder.AddPersonFromCamera()
     else:
@@ -23,3 +24,5 @@ def main():
         else:
             inp = input('Full name of file(with all directories): ')
             Adder.add_audio(inp)
+
+main()

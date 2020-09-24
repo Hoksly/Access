@@ -10,7 +10,7 @@ SR = 1600
 LENGHT = 16
 OVERLAP = 8
 FFT = 1024
-directory = '/root/Github/Acces/Access/Data'
+directory = '/home/hoksly/Github/Acces/Access/Data'
 
 
 def confidece(x, y):

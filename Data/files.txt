@@ -1,0 +1,2 @@
+/home/hoksly/Desktop/Test_cryp/t1, /home/hoksly/Githab/Access/Data/Crypted/encrypted1.aes: tjQJaYGoeGguwX_N
+/home/hoksly/Desktop/Test_cryp/Coder, /home/hoksly/Githab/Access/Data/Crypted/encrypted2.aes: tjQJaYGoeGguwX_N

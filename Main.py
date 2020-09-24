@@ -74,12 +74,11 @@ def main():
 
     res, Name = compare_names(voice_name, face_name)
 
-    if res:
+    if res and Name != 'Unknown Person':
         print()
         print('Welcome back ' + Name)
         print()
     else:
         print(Name)
-
 
 main()

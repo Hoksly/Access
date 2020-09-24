@@ -7,7 +7,7 @@ import os
 
 def get_names_and_encodes_from_file():
     # folder = os.getcwd()
-    folder = '/root/Github/Access/Data'
+    folder = '/home/hoksly/Github/Access/Data'
     try:
         with open(folder + '/Persons.txt', 'a') as t:
             t.close()
@@ -16,7 +16,8 @@ def get_names_and_encodes_from_file():
             t.close()
 
     file = open(folder + '/Persons.txt', 'r')
-    names_and_enc = file.read().split('\n')[1:]
+    file_data = file.read()
+    names_and_enc = file_data.split('\n')[1:]
 
     if True:
         d = {}
@@ -111,7 +112,6 @@ class FaceAccess:
         name = ''
 
         enc = list(known_encodes_and_names.values())
-
         while True:
 
             ret, frame = cap.read()
@@ -128,18 +128,15 @@ class FaceAccess:
 
                 if True not in a:
 
-
                     new_name = compare(new_enc, known_encodes_and_names)
-                    enc = new_enc
+
                     if name != new_name:
                         name = new_name
-                        if name != "Unknown Person":
+                        if "Unknown Person" != name:
                             return name
                         else:
-                            if counter > 1:
-                                return 'Unknown Person'
-                            else:
-                                counter += 1
+                            return 'Unknown Person'
+
                     else:
                         continue
 
@@ -148,6 +145,7 @@ class FaceAccess:
 
         cap.release()
         cv2.destroyAllWindows()
+        return new_name
 
 
 class FaceAdder:
@@ -156,7 +154,7 @@ class FaceAdder:
 
         cap = cv2.VideoCapture(0)
         # folder = os.getcwd()
-        folder = "/root/Github/Access/Data"
+        folder = "/home/hoksly/Github/Access/Data"
         try:
             with open(folder + '/Persons.txt', 'a') as t:
                 t.close()
@@ -191,5 +189,3 @@ class FaceAdder:
 
         file.close()
         print("Done")
-
-
